@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список доступных номеров</title>
+    <style>
+        /* Стили для body */
+        body {
+            background-image: url('https://viahotel.ru/pic/нов_(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff; /* Цвет текста */
+        }
+
+        /* Стили для меню */
+        nav {
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный цвет фона */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Стили для секций */
+        section {
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 1200px;
+            margin: 20px auto; /* Центрирование по горизонтали и добавление отступа */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .room-card {
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный цвет фона */
+            border-radius: 20px;
+            padding: 20px;
+            flex: 0 0 calc(25% - 40px); /* Определяем ширину карточки, учитывая промежутки */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень */
+        }
+
+        .room-card h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .room-card p {
+            color: #ccc;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .room-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Стили для формы */
+        .filter-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-form select {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .filter-form button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Меню -->
+    <nav>
+        <ul>
+       <li><a href="/indexguest/">Главная</a></li>
+            <li><a href="/roomsguest/">Номера</a></li>
+
+        </ul>
+    </nav>
+    <h1>Список доступных номеров</h1>
+  <!-- Форма фильтрации -->
+<form class="filter-form" action="/roomsguest/" method="get">
+    <select name="category">
+        <option value="">Все категории</option>
+        {% for category in categories %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Поиск</button>
+</form>
+
+    <!-- Контент страницы -->
+<section>
+    {% for room in rooms %}
+        {% if room.availability != 'occupied' %}
+            {% if category %}
+                {% if room.category.name == category %}
+                    <div class="room-card">
+                        <h2>Номер: {{ room.room_number }}</h2>
+                        <p>Отель: {{ room.hotel.name }}</p>
+                        <p>Категория: {{ room.category.name }}</p>
+                        <p>Вместимость: {{ room.capacity }}</p>
+                        <p>Цена: {{ room.price }}</p>
+                        <p>Доступность: {{ room.availability }}</p>
+                        <img src="{{ room.photo.url }}" alt="Photo of Room">
+
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="room-card">
+                    <h2>Номер: {{ room.room_number }}</h2>
+                    <p>Отель: {{ room.hotel.name }}</p>
+                    <p>Категория: {{ room.category.name }}</p>
+                    <p>Вместимость: {{ room.capacity }}</p>
+                    <p>Цена: {{ room.price }}</p>
+                    <p>Доступность: {{ room.availability }}</p>
+                    <img src="{{ room.photo.url }}" alt="Photo of Room">
+
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</section>
+
+</body>
+</html>

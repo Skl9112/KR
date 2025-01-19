@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск телефона сотрудника</title>
+</head>
+<body>
+    <h1>Поиск телефона сотрудника</h1>
+    <label for="nameInput">Введите фамилию и инициалы:</label>
+    <input type="text" id="nameInput" placeholder="Иванов И.И." />
+    <button id="searchButton">Найти телефон</button>
+
+    <p id="result"></p>
+
+    <script>
+        // Ассоциативный массив с телефонами сотрудников
+        const phoneDirectory = {
+            "Иванов И.И.": "+375-44-456-78-90",
+            "Петров П.П.": "+375-29-654-32-10",
+            "Сидоров С.С.": "+375-29-555-55-55",
+            "Кузнецов А.А.": "+375-33-333-44-55"
+        };
+
+        // Обработчик кнопки поиска
+        document.getElementById("searchButton").addEventListener("click", () => {
+            const name = document.getElementById("nameInput").value.trim();
+            const resultElement = document.getElementById("result");
+
+            if (name === "") {
+                resultElement.textContent = "Введите фамилию и инициалы сотрудника.";
+                return;
+            }
+
+            // Поиск телефона
+            const phone = phoneDirectory[name];
+
+            if (phone) {
+                resultElement.textContent = `Телефон сотрудника ${name}: ${phone}`;
+            } else {
+                resultElement.textContent = `Сотрудник с именем '${name}' не найден.`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование номера</title>
+    <style>
+        /* Стили для body */
+        body {
+            background-image: url('https://viahotel.ru/pic/нов_(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff; /* Цвет текста */
+        }
+
+        /* Стили для меню */
+        nav {
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный цвет фона */
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Стили для секций */
+        section {
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 1200px;
+            margin: 20px auto; /* Центрирование по горизонтали и добавление отступа */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .room-card {
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный цвет фона */
+            border-radius: 20px;
+            padding: 20px;
+            flex: 0 0 calc(25% - 40px); /* Определяем ширину карточки, учитывая промежутки */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень */
+        }
+
+        .room-card h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .room-card p {
+            color: #ccc;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .room-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Стили для формы */
+        .filter-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-form select {
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .filter-form button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-form button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+      ul {
+    list-style-type: none;
+    padding: 0;
+    color: #333; /* Цвет текста */
+}
+
+li {
+    margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+   <!-- Меню -->
+    <nav>
+        <ul>
+           <li><a href="/index/">Главная</a></li>
+            <li><a href="/rooms/">Номера</a></li>
+            <li><a href="/client_reservations/">Мои брони</a></li>
+
+        </ul>
+    </nav>
+    <h1>Бронирование номера</h1>
+
+    <div class="container">
+        <!-- Форма для бронирования -->
+        <form action="/booking/" method="post">
+            {% csrf_token %}
+             <input type="hidden" name="room_id" value="{{room.room_id}}">
+            <label for="client_first_name">Имя:</label>
+            <input type="text" id="client_first_name" name="client_first_name" required>
+            <label for="client_last_name">Фамилия:</label>
+            <input type="text" id="client_last_name" name="client_last_name" required>
+            <label for="check_in_date">Дата заезда:</label>
+            <input type="date" id="check_in_date" name="check_in_date" required>
+            <label for="check_out_date">Дата выезда:</label>
+            <input type="date" id="check_out_date" name="check_out_date" required>
+            <button type="submit">Подтвердить бронь</button>
+        </form>
+    </div>
+</body>
+</html>

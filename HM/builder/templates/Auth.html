@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        /* Стили для body */
+        body {
+            background-image: url('https://viahotel.ru/pic/нов_(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff; /* Цвет текста */
+        }
+
+        /* Стили для формы */
+        form {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: rgba(244, 244, 244, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="password"],
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"]:disabled,
+        input[type="tel"]:disabled {
+            background-color: #eee;
+        }
+        input[type="submit"],
+        button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        <h2>Авторизация</h2>
+        <select name="user_type" style="margin-bottom: 10px;" onchange="toggleFields(this)">
+            <option value="client">Клиент</option>
+            <option value="admin">Администратор</option>
+            <option value="guest">Гость</option>
+        </select>
+        <input type="text" name="name" id="name" placeholder="Имя" required>
+        <input type="tel" name="phone" id="phone" placeholder="Номер телефона" required>
+        <input type="submit" value="Войти">
+        <button type="submit" name="guest" value="true" formaction="/indexguest/">Войти как гость</button>
+    </form>
+
+    <script>
+        function toggleFields(select) {
+            var nameField = document.getElementById('name');
+            var phoneField = document.getElementById('phone');
+    if (select.value === 'admin') {
+                nameField.disabled = true;
+                phoneField.disabled = true;
+            } else {
+                nameField.disabled = false;
+                phoneField.disabled = false;
+            }
+            if (select.value === 'guest') {
+                nameField.disabled = true;
+                phoneField.disabled = true;
+            } else {
+                nameField.disabled = false;
+                phoneField.disabled = false;
+            }
+
+        }
+    </script>
+</body>
+</html>

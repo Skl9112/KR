@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О гостинице</title>
+    <style>
+        body {
+            background-image: url('https://viahotel.ru/pic/нов_(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #007bff;
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            border-radius: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        section h2 {
+            color: white;
+            font-size: 24px;
+        }
+        section p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        iframe {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: 315px;
+        }
+        .history ul {
+            list-style: none;
+            padding: 0;
+        }
+        .history ul li {
+            margin-bottom: 10px;
+        }
+        .certificates img {
+            display: block;
+            max-width: 300px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Логотип -->
+    <img class="logo" src="logo-placeholder.png" alt="Логотип гостиницы">
+
+    <!-- Меню -->
+    <nav>
+        <ul>
+            <li><a href="/index/">Главная</a></li>
+            <li><a href="/rooms/">Номера</a></li>
+            <li><a href="/client_reservations/">Мои брони</a></li>
+            <li><a href="/about/">О гостинице</a></li>
+        </ul>
+    </nav>
+
+    <!-- Контент страницы -->
+    <section id="about">
+        <h2>О нашей гостинице</h2>
+        <p>Наша гостиница расположена в уникальном месте, предлагая гостям сочетание комфорта, природы и современного сервиса.</p>
+        <p>Мы гордимся тем, что наши номера и услуги удовлетворяют требованиям как деловых путешественников, так и семей, ищущих отдых.</p>
+        <p>Живописная природа, уютные номера и приветливый персонал — это то, что делает ваше пребывание у нас незабываемым.</p>
+    </section>
+
+    <!-- Встроенное видео -->
+    <section id="video">
+        <h2>Посмотрите видео о нашей гостинице</h2>
+        <iframe src="https://www.youtube.com/watch?v=1itnneisHAw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <!-- История компании -->
+    <section id="history">
+        <h2>История по годам</h2>
+        <div class="history">
+            <ul>
+                <li><strong>1990:</strong> Основание гостиницы.</li>
+                <li><strong>2000:</strong> Полная реновация здания.</li>
+                <li><strong>2010:</strong> Открытие SPA-зоны.</li>
+                <li><strong>2020:</strong> Внедрение онлайн-бронирования.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Реквизиты компании -->
+    <section id="details">
+        <h2>Реквизиты компании</h2>
+        <p><strong>Название:</strong> ООО "Гостиница Уют"</p>
+        <p><strong>ИНН:</strong> 1234567890</p>
+        <p><strong>ОГРН:</strong> 1027700132195</p>
+        <p><strong>Юридический адрес:</strong> г. Минск, ул. Примерная, д. 5</p>
+        <p><strong>Телефон:</strong> +374 (44) 123-45-67</p>
+        <p><strong>Email:</strong> info@gostinica.ru</p>
+    </section>
+
+    <!-- Сертификаты -->
+    <section id="certificates">
+        <h2>Сертификаты</h2>
+        <div class="certificates">
+            <img src="https://fb.ru/misc/i/gallery/20380/3085180.jpg" alt="Сертификат 1">
+            <img src="https://arkadia.tmweb.ru/files/Image/08_full.gif" alt="Сертификат 2">
+        </div>
+    </section>
+</body>
+</html>
